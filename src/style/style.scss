@@ -1,0 +1,336 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "SF Pro Display";
+  color: white;
+  background-color: #1d1d1d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main {
+  width: 700px;
+}
+
+.header {
+  margin-top: 50px;
+  height: 150px;
+  position: relative;
+  font-size: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: bold;
+}
+
+.rock {
+  position: absolute;
+  left: 50px;
+  color: rgb(172, 131, 20);
+  animation: colorize 1.3s ease-in alternate infinite;
+  transform: rotate(-10deg);
+}
+
+@keyframes colorize {
+  0% {
+    margin-top: 10px;
+    color: rgb(30, 91, 221);
+    text-shadow: 0 0 5px rgb(30, 91, 221);
+  }
+
+  50% {
+    color: rgb(42, 201, 63);
+    text-shadow: 0 0 5px rgb(42, 201, 63);
+  }
+
+  100% {
+    color: rgb(240, 73, 73);
+    text-shadow: 0 0 5px rgb(240, 73, 73);
+  }
+}
+
+.paper {
+  position: absolute;
+  top: 20px;
+  animation: colorize2 1.3s ease-in alternate infinite;
+  transform: rotate(20deg);
+}
+
+@keyframes colorize2 {
+  0% {
+    margin: 5px -10px 0 0;
+    color: rgb(42, 201, 63);
+    text-shadow: 0 0 5px rgb(42, 201, 63);
+  }
+
+  50% {
+    color: rgb(240, 73, 73);
+    text-shadow: 0 0 5px rgb(240, 73, 73);
+  }
+
+  100% {
+    margin: 0 10px 0 0;
+    color: rgb(30, 91, 221);
+    text-shadow: 0 0 5px rgb(30, 91, 221);
+  }
+}
+
+.scissor {
+  position: absolute;
+  right: 5px;
+  animation: colorize3 1.3s ease-in alternate infinite;
+  transform: rotate(-5deg);
+}
+
+@keyframes colorize3 {
+  0% {
+    margin: 15px;
+    color: rgb(240, 73, 73);
+    text-shadow: 0 0 5px rgb(240, 73, 73);
+  }
+
+  50% {
+    color: rgb(30, 91, 221);
+    text-shadow: 0 0 5px rgb(30, 91, 221);
+  }
+
+  100% {
+    color: rgb(42, 201, 63);
+    text-shadow: 0 0 5px rgb(42, 201, 63);
+  }
+}
+
+.subHeader {
+  display: flex;
+  justify-content: center;
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+
+.body {
+  border: 1px solid white;
+  height: 400px;
+  padding: 100px 0;
+}
+
+.wait {
+  text-align: center;
+  margin: auto;
+  button {
+    font-family: "Montserrat";
+    padding: 10px;
+    height: 50px;
+    width: 150px;
+    border: 3px solid white;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    background-image: linear-gradient(
+      to bottom left,
+      rgb(214, 177, 13),
+      rgb(236, 34, 61)
+    );
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .sprite-holder {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .sprite {
+    margin: 30px 0;
+    // filter: drop-shadow(0 0 3px white);
+    height: 100px;
+    width: 100px;
+    padding: 5px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .rck {
+    animation: first 0.5s ease-in alternate infinite;
+  }
+
+  .ppr {
+    animation: second 0.5s ease-in alternate infinite;
+  }
+
+  .scr {
+    animation: third 0.5s ease-in alternate infinite;
+  }
+
+  @keyframes first {
+    0% {
+      border: none;
+      transform: scale(1);
+    }
+    50% {
+      border: none;
+    }
+    100% {
+      border: none;
+      transform: scale(1.2);
+    }
+  }
+  @keyframes second {
+    0% {
+      border: none;
+      transform: scale(1);
+    }
+    60% {
+      transform: scale(1.3);
+    }
+    100% {
+      border: none;
+      transform: scale(1);
+    }
+  }
+  @keyframes third {
+    0% {
+      border: none;
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.bodyPlaying {
+  height: 400px;
+  padding: 30px;
+  .playBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .choice-sprite {
+      height: 150px;
+      width: 150px;
+      animation: lockin 1s ease both;
+    }
+
+    @keyframes lockin {
+      from {
+        transform: scale(1.3);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    .spinner {
+      font-size: 70px;
+      animation: spin 2s infinite;
+      animation-timing-function: linear;
+    }
+    @keyframes spin {
+      0% {
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .left,
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      border: 2px solid white;
+      height: 200px;
+      width: 200px;
+    }
+
+    .referee {
+      width: 200px;
+      text-align: center;
+      h3 {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  .choices {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    .choiceBtn {
+      font-family: Montserrat;
+      font-weight: bold;
+      height: 60px;
+      width: 100px;
+      color: white;
+      border-radius: 50px;
+      border: 2px solid white;
+      transition: 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:nth-child(1) {
+        background-image: linear-gradient(to bottom left, limegreen, green);
+      }
+      &:nth-child(2) {
+        background-image: linear-gradient(
+          to bottom left,
+          rgb(245, 133, 133),
+          red
+        );
+      }
+      &:nth-child(3) {
+        background-image: linear-gradient(
+          to bottom left,
+          rgb(136, 151, 236),
+          blue
+        );
+      }
+    }
+    .again {
+      width: 100%;
+      &:nth-child(1){
+      background-image: linear-gradient(
+        to bottom,
+        rgb(225, 228, 52),
+        rgb(190, 108, 31)
+      );}
+
+      
+    }
+  }
+}
+.spinner-small {
+  font-size: 20px;
+  animation: spin 2s infinite;
+  animation-timing-function: linear;
+}
+
+
+.quit {
+  font-family: Montserrat;
+  display: block;
+  width: 100%;
+  border: 2px solid white;
+  border-radius :50px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+ background-color: rgb(54, 54, 54);
+
+ &:hover {
+   transform: scale(0.9);
+ }
+}
